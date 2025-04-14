@@ -26,7 +26,26 @@ python3 RPIMotorService.py
 ### Laptop
 ssh pi@192.168.1.11
 
-1. Clone
+Clone the repository:
 ```Shell
 git clone https://github.com/soyhorteconh/omni_ros2.git
 ```
+
+Dependencies Installation:
+```Shell
+sudo apt install ros-humble-joy
+sudo apt install ros-humble-joy-linux
+```
+
+Joystick Configuration:
+```Shell
+ls /dev/input/
+sudo apt install joystick jstest-gtk
+jstest-gtk
+```
+
+```Shell
+ros2 launch oav_utils gs_launch.py
+```
+
+
