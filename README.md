@@ -11,11 +11,20 @@ python3 -m grpc_tools.protoc -I ./interface --python_out=. --grpc_python_out=. .
 ```
 
 ## SSH Interface
-# Ethernet
-ssh user@192.168.55.1
+# Jetson
+ssh user@192.168.2.101
+```Shell
+ros2 launch oav_utils jetson_launch.py
+```
 
-# Max Hotspot
-ssh user@10.42.0.243
+# Raspberry
+ssh pi@192.168.2.103
+```Shell
+python3 RPIMotorService.py
+```
 
-# RPI
+# Laptop
 ssh pi@192.168.1.11
+```Shell
+git clone https://github.com/soyhorteconh/omni_ros2.git
+```
