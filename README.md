@@ -24,8 +24,6 @@ python3 RPIMotorService.py
 ```
 
 ### Laptop
-ssh pi@192.168.1.11
-
 Clone the repository:
 ```Shell
 git clone https://github.com/soyhorteconh/omni_ros2.git
