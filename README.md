@@ -78,7 +78,6 @@ cd ~/omni_ros2/src/oav_utils/scripts
 ```
 3. Run the Raspberry Pi motor service:
 ```Shell
-Shell
 python3 RPIMotorService.py
 ```
 
