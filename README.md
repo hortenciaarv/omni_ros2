@@ -8,7 +8,7 @@ git clone https://github.com/soyhorteconh/omni_ros2.git
 
 ## 1. Install dependencies 
 
-*Dependencies for Raspberry Pi* (Theese dependencies are already installed on the board, in case of any error with one of those run: )
+*Dependencies for Raspberry Pi* (Theese dependencies are already installed on the board, in case of any error with one of those run)
 
 ```Shell
 pip install grpcio
@@ -21,7 +21,7 @@ cd ~/[your ws]/src/oav_utils/scripts
 python3 -m grpc_tools.protoc -I ./interface --python_out=. --grpc_python_out=. ./interface/rpi-motor.proto
 ```
 
-*Dependencies for Laptop* In order to run the project on your laptop, you need to install the following dependencies:
+*Dependencies for Laptop:* In order to run the project on your laptop, you need to install the following dependencies:
 
 ```Shell
 sudo apt install ros-humble-joy
@@ -29,7 +29,7 @@ sudo apt install ros-humble-joy-linux
 sudo apt install joystick jstest-gtk
 ```
 
-*Turn on the hotstop* Make sure that the hotspot is turned on so the Raspberry Pi, Jetson and the your Laptop are in the same network.
+*Turn on the hotspot:* Make sure that the hotspot is turned on so the Raspberry Pi, Jetson and the your Laptop are in the same network.
 The wifi name should something like "ecm2g-9d4759" and the password is "1243663215910"
 
 ## 2. Running the project 
