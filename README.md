@@ -65,6 +65,47 @@ source install/setup.bash
 
 And then, try to launch the node again,you should not get the error anymore.
 
+### Running the docker container with the realsense camera 
+
+To run the docker container with the realsense camera, follow these steps:
+On the Jetson board, run the following commands: 
+1. To see the available docker containers:
+```Shell
+sudo docker container ls -a 
+```
+2. Start the docker container of the project which  is:
+```Shell
+sudo docker start robotics-work-new
+```
+3. Attach the docker container: 
+```Shell
+sudo docker attach robotics-work-new
+```
+Once you are inside the docker container, just run:
+```Shell
+realsense-viewer
+```
+This will open the realsense viewer and you will be able to see the camera feed.
+
+In case you get a log error "Authorization required, but no authorization protocol specified", just exit the docker container, and run the following command to fix it:
+```Shell
+xhost +local:root
+```
+Then, reattach the docker container and run the `realsense-viewer` command again.
+
+If you get an error related with the camera not being found, you may need to turn off the jetson board, unplug the camera first and then turn it on again. You can also check if the camera is found by going to the `/dev' directory and check if video0 - videoN files are present:
+```Shell
+cd /dev
+ls
+```
+
+If you want to just see if the camera is working, run the following command: 
+```Shell
+cd /home/robotics/data 
+python rs2demo.py
+```
+This will run a simple script that will show the camera feed in a window. If you see the camera feed, then the camera is working properly.
+
 #### Raspberry
 
 1. Connect to the Raspberry Pi via SSH:
@@ -110,4 +151,4 @@ source install/setup.bash
 ```Shell
 ros2 launch oav_utils gs_launch.py
 ```
-
+ 
