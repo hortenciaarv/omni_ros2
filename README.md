@@ -42,8 +42,9 @@ To ensure a correct execution of the project, follow these steps:
 ```Shell
 ssh user@192.168.2.102
 ```
+If the IP address is not working, try subsecuent addresses like 192.168.2.104.... and so on. (This is a bug that must be fixed in the future, but it is not a priority right now).
 
-If have any troubles connecting, you may connect via HDMI/DisplayPort the Jetson board and verify if the network is properly configured.
+If have any troubles connecting, you may connect via HDMI/DisplayPort the Jetson board and verify if the network is properly configured. Password is *Interfaces22*
 
 
 2. Move into the workspace directory:
@@ -75,11 +76,11 @@ sudo docker container ls -a
 ```
 2. Start the docker container of the project which  is:
 ```Shell
-sudo docker start robotics-work-new
+sudo docker start robotics-work-develop
 ```
 3. Attach the docker container: 
 ```Shell
-sudo docker attach robotics-work-new
+sudo docker attach robotics-work-develop
 ```
 Once you are inside the docker container, just run:
 ```Shell
@@ -106,12 +107,46 @@ python rs2demo.py
 ```
 This will run a simple script that will show the camera feed in a window. If you see the camera feed, then the camera is working properly.
 
+### Running the docker container with the Lidar
+In case you have a terminal busy with the realsense viewer, you can open a new terminal and run the following commands to run the docker container with the Lidar:
+```Shell
+sudo docker exec -it robotics-work-develop bash
+```
+This will open a new terminal inside the docker container.
+
+To run the docker container with the Lidar, follow these steps: 
+On the Jetson board, run the following commands:
+1. To see the available docker containers:
+```Shell
+sudo docker container ls -a
+```
+2. Start the docker container of the project which is:
+```Shell
+sudo docker start robotics-work-develop
+```
+3. Attach the docker container:
+```Shell
+sudo docker attach robotics-work-develop
+```
+Once you are inside the docker container, just run:
+```Shell
+cd home/robotics/data/lidar_ws
+colcon build
+source ./install/setup.bash
+sudo chmod 777 /dev/ttyUSB0
+ros2 launch rplidar_ros view_rplidar_a2m8_launch.py
+```
+This will launch the RPLidar node and you will be able to see the Lidar data in RViz.
+
+If you still need more help with the Lidar check the official documentation on the github repository: https://github.com/Slamtec/rplidar_ros/tree/ros2
+
 #### Raspberry
 
 1. Connect to the Raspberry Pi via SSH:
 ```Shell
 ssh pi@192.168.2.103
 ```
+Password is *1234*
 
 2. Move into the workspace ditectory
 ```Shell
@@ -120,15 +155,7 @@ cd ~/omni_ros2/src/oav_utils/scripts
 3. Run the Raspberry Pi motor service:
 ```Shell
 Shell
-python3 RPIMotorService.py
-```
-
-In case you get an error related with the scripts you will need to rebuild the proto, follow the instructions in the "Install dependencies" section. And rebuild the workspace:
-```Shell
-cd ~/omni_ros2
-colcon build
-source /opt/ros/humble/setup.bash
-source install/setup.bash
+python3 RPIMotorService4T.py
 ```
 
 #### Laptop
