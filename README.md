@@ -155,7 +155,7 @@ cd ~/omni_ros2/src/oav_utils/scripts
 3. Run the Raspberry Pi motor service:
 ```Shell
 
-python3 RPIMotorService4T.py
+python3 RPIMotorService.py
 ```
 
 #### Laptop
